@@ -4,6 +4,7 @@
     }
     spl_autoload_register('chargerClasse');
 
+    /* Création de deux titulaire */
     $titulaire1 = new Titulaire("Sousa", "David", "2001-01-08", "Strasbourg");
     $compteLivretJeune1 = new Compte("Livret Jeune", 1000, "€", $titulaire1);
     $compteLivretA1 = new Compte("Livret A", 2000, "€", $titulaire1);
