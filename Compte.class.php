@@ -13,6 +13,7 @@
             $this->_titulaire = $titulaire;
             $this->_titulaire->setComptesBancaires($this);
         }
+        
         /* Getter et Setter du libellé */
         public function getLibellé() : string{
             return $this->_libellé;
