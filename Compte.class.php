@@ -44,7 +44,7 @@
         public function créditer(int $somme){
             $this->_solde += $somme;
             /*
-            echo "Vous avez créditer le compte " . $this->getLibellé() . " de " . $this->getTitulaire()->identité() . " de $somme " . $this->getDeviseMonétaire() . ", il contient maintenant : " . $this->getSolde() . " " . $this->getDeviseMonétaire() . "<br>";
+            echo "Vous avez créditer le compte " . $this->getLibellé() . " de " . $this . " de $somme " . $this->getDeviseMonétaire() . ", il contient maintenant : " . $this->getSolde() . " " . $this->getDeviseMonétaire() . "<br>";
             if($this->getSolde() < 0){
                 echo "Attention ! Le solde de ce compte est négatif !<br>";
             }
@@ -54,7 +54,7 @@
         public function débiter(int $somme){
             $this->_solde -= $somme;
             /*
-            echo "Vous avez débiter ce compte " . $this->_libellé . " de " . $this->_titulaire->identité() . " de $somme " . $this->getDeviseMonétaire() . ", il contient maintenant : " . $this->getSolde() . " " . $this->getDeviseMonétaire() . "<br>";
+            echo "Vous avez débiter ce compte " . $this->_libellé . " de " . $this . " de $somme " . $this->getDeviseMonétaire() . ", il contient maintenant : " . $this->getSolde() . " " . $this->getDeviseMonétaire() . "<br>";
             if($this->getSolde() < 0){
                 echo "Attention ! Le solde de ce compte est négatif !<br>";
             }
@@ -63,22 +63,26 @@
 
         public function virement(Compte $versCompte, int $somme){
             if($this->getSolde() < $somme){
-                echo "Impossible, la somme du virement est supérieur au solde du compte \"" . $this->getLibellé() . "\" appartenant à " . $this->getTitulaire()->identité() . ".<br>";
+                echo "Impossible, la somme du virement est supérieur au solde du compte \"" . $this->getLibellé() . "\" appartenant à " . $this->getTitulaire() . ".<br>";
             }
             else{
                 $this->débiter($somme);
                 $versCompte->créditer($somme);
-                echo "Vous avez effectuer un virement de $somme depuis le compte \"" . $this->getLibellé() . "\" appartenant à " . $this->getTitulaire()->identité() . " vers le compte \"" . $versCompte->getLibellé() . "\" appartenant à " . $versCompte->getTitulaire()->identité() . ".<br>";
+                echo "Vous avez effectuer un virement de $somme depuis le compte \"" . $this->getLibellé() . "\" appartenant à " . $this->getTitulaire() . " vers le compte \"" . $versCompte->getLibellé() . "\" appartenant à " . $versCompte->getTitulaire() . ".<br>";
             }
             
 
         }
 
-        public function __toString(){
+        public function détailCompte(){
             return "Voici les informations de ce compte bancaire : <br>
                         - Libellé : $this->_libellé<br>
                         - Solde : $this->_solde $this->_deviseMonétaire<br>
-                        - Titulaire : " . $this->_titulaire->identité() . "<br>";
+                        - Titulaire : " . $this->getTitulaire() . "<br>";
+        }
+
+        public function __toString(){
+            return $this->_libellé;
         }
     }
 ?>

@@ -15,46 +15,46 @@
     $compteCourant2 = new Compte("Compte Courant", 1000, "€", $titulaire2);
 
     /* Test de l'affichage */
-    echo $compteLivretA1;
+    echo $compteLivretA1->détailCompte();
     echo "<br>";
 
     /* Test de créditer et débiter */
     $compteLivretA1->créditer(500);
-    echo $compteLivretA1;
+    echo $compteLivretA1->détailCompte();
     echo "<br>";
 
     $compteLivretA1->débiter(200);
-    echo $compteLivretA1;
+    echo $compteLivretA1->détailCompte();
     echo "<br>";
 
     /* Affichage des comptes qui vont être tester */
-    echo $compteCourant1;
+    echo $compteCourant1->détailCompte();
     echo "<br>";
-    echo $compteCourant2;
+    echo $compteCourant2->détailCompte();
     echo "<br>";
 
     /* Test d'un virement qui fonctionne */
     $compteCourant1->virement($compteCourant2, 300);
     echo "<br>";
     /* Affichage des comptes concernés */
-    echo $compteCourant1;
+    echo $compteCourant1->détailCompte();
     echo "<br>";
-    echo $compteCourant2;
+    echo $compteCourant2->détailCompte();
     echo "<br>";
 
     /* Test d'un virement qui ne fonctionne pas */
     $compteCourant1->virement($compteCourant2, 300);
     echo "<br>";
     /* Affichage des comptes concernés */
-    echo $compteCourant1;
+    echo $compteCourant1->détailCompte();
     echo "<br>";
-    echo $compteCourant2;
+    echo $compteCourant2->détailCompte();
     echo "<br>";
     
     /* Affichage des infos du titulaire1 */
-    echo $titulaire1;
+    echo $titulaire1->détailTitulaire();
     echo "<br>";
 
     /* Affichage des infos du titulaire2 */
-    echo $titulaire2;
+    echo $titulaire2->détailTitulaire();
 ?>

@@ -48,10 +48,6 @@
             array_push($this->_comptesBancaires, $comptesBancaires);
         }
 
-        public function identité() : string{
-            return $this->_nom . " " . $this->_prénom;
-        }
-
         public function calculAge(){
             $aujourdhui=new DateTime();
             $date = new DateTime($this->_dateNaissance);
@@ -59,14 +55,17 @@
             return $diff->format("%Y");
         }
 
-        public function __toString(){
-            $result = "Le titulaire " . $this->identité() . ", âgé de " . $this->calculAge() . " ans et vivant à " . $this->_ville . " possède " . count($this->_comptesBancaires) . " comptes :<br>";
+        public function détailTitulaire(){
+            $result = "Le titulaire " . $this . ", âgé de " . $this->calculAge() . " ans et vivant à " . $this->_ville . " possède " . count($this->_comptesBancaires) . " comptes :<br>";
             for($i=0; $i<count($this->_comptesBancaires); $i++){
                 $j = $i+1;
                 $result .= "- Compte n°$j : " . $this->_comptesBancaires[$i]->getLibellé() . "<br>";
             }
-
             return $result;
+        }
+
+        public function __toString(){
+            return $this->_nom . " " . $this->_prénom;
         }
     }
 ?>
